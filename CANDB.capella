@@ -377,15 +377,35 @@
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="ed7f2ab9-976b-4b3d-8718-92c07a187597" name="Определение маршрута сообщения">
-            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="1946e89c-5208-413a-8aa6-f5b7088a763e" name="inСетевое сообщение"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="916e0706-5ed2-4bf7-af2b-fd8ddc5c24e7" name="outКоммункационная матрица"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="504ddc65-9b4f-46e3-9069-2b98855c3fe9" name="outСетевое сообщение"/>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+                id="dc10077d-7fda-415c-b3c6-a35415091da0" name="Определение возможных маршрутов доставки сообщения">
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="2dc84266-498e-4903-92b1-e073b223f2b6" name="FIP 1"/>
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="172e6351-2bec-42e2-ad25-ee264f5a7c1d" name="FOP 1"/>
+            </ownedFunctions>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+                id="0783a488-5e03-4e93-8632-32c2fa4ad3df" name="Создание переадресации маршрута сообщения через шлюзы">
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="1a8e5a14-d016-44d8-93d6-d93c6ee59f7b" name="FIP 1"/>
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="009f4410-2753-4dcf-9c39-d85066c7a834" name="FOP 1"/>
+            </ownedFunctions>
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+                id="d5063ec7-b56c-4f06-a341-e03b15bc3920" name="Добавление новых маршрутов сообщения в коммуникационные матрицы">
+              <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                  id="86083559-0180-4478-bb84-51d59bb3cbe4" name="FIP 1"/>
+            </ownedFunctions>
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
                 id="957a95c0-0adf-4f6d-92f1-18e434b5860f" targetElement="#d1136f25-6a2c-448a-812d-422fcf41ed17"
                 sourceElement="#ed7f2ab9-976b-4b3d-8718-92c07a187597"/>
+            <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+                id="b907e702-a1ec-4ee8-a4dd-d76957be8042" name="Маршрут следования сообщения по сети передачи данных"
+                target="#86083559-0180-4478-bb84-51d59bb3cbe4" source="#009f4410-2753-4dcf-9c39-d85066c7a834"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="83628429-71ba-45f2-a23f-59d02f0e373c" name="Формирование артефактов и версии информационного обмена">
@@ -474,6 +494,20 @@
                 id="79615872-2163-4137-b405-816c3bf61e09" name="FOP 1"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="87837f65-4fbb-4e22-b1f2-891c64a8ef41" name="FOP 2"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="40330aa6-e7f2-4cf8-ab0b-04a0e29f35e2" name="Предоставление получателя сообщения">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="1946e89c-5208-413a-8aa6-f5b7088a763e" name="inСетевое сообщение"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="ec7cc375-2f37-42f9-b6f3-9083813f6c67" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="0cae1ec2-0544-4143-8398-a78814b6e0bf" name="Выбор маршрута сообщения">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="3639f01a-677b-4d46-abf8-ee5b69ab260f" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="15b0d46d-b540-4ece-a93b-74bd88b14b45" name="FOP 1"/>
           </ownedFunctions>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="aec48999-edf9-4b1e-aa90-914387364380" targetElement="#a4f9cbf5-1d62-4b0e-8093-04c3701559b6"
@@ -617,6 +651,15 @@
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="70c4c7ab-fde9-4410-a01b-c4f517d3f8dc" name="Параметры сигналов"
               target="#c6176d7f-e240-4990-9319-ace9f92f6f45" source="#87837f65-4fbb-4e22-b1f2-891c64a8ef41"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="5a0b11a4-72dd-49e7-b243-46e8c2ba1c83" name="Получатель сообщения"
+              target="#2dc84266-498e-4903-92b1-e073b223f2b6" source="#ec7cc375-2f37-42f9-b6f3-9083813f6c67"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="a0fa701b-8c86-452a-bff4-54e3b3ab0c5a" name="Маршруты сообщения"
+              target="#3639f01a-677b-4d46-abf8-ee5b69ab260f" source="#172e6351-2bec-42e2-ad25-ee264f5a7c1d"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="bf1ca6ed-f7f3-4df9-a2a3-4583511abf42" name="Выбранный маршрут" target="#1a8e5a14-d016-44d8-93d6-d93c6ee59f7b"
+              source="#15b0d46d-b540-4ece-a93b-74bd88b14b45"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
@@ -752,7 +795,22 @@
         <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
             id="3beacfea-5d50-4ceb-aca6-ac5f2cff173a" name="System">
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-              id="bc39fc00-81dd-45a1-ad78-95633a96ef15" targetElement="#2976acf3-0029-407f-8f85-0a2c6b5a7fe5"
+              id="148daa66-8938-43f2-98bb-04c4a966bd4d" targetElement="#ed7f2ab9-976b-4b3d-8718-92c07a187597"
+              sourceElement="#3beacfea-5d50-4ceb-aca6-ac5f2cff173a"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="063b64d4-b042-43fe-978d-9c77ba6ca9e5" targetElement="#7cf2da83-e447-4c45-86a2-5227975dd764"
+              sourceElement="#3beacfea-5d50-4ceb-aca6-ac5f2cff173a"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="545ba01a-37d0-4571-a013-6088d8123dd8" targetElement="#ba18c010-f0dd-4b12-98e2-9cce649c0a36"
+              sourceElement="#3beacfea-5d50-4ceb-aca6-ac5f2cff173a"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="cc29a8a1-d75f-4aaf-a1a0-2c49fe667c9b" targetElement="#d213238b-423c-4fdc-ac3d-c505950aef62"
+              sourceElement="#3beacfea-5d50-4ceb-aca6-ac5f2cff173a"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="e395ae08-f920-4447-a77e-797fb2d906df" targetElement="#9d0a36f3-12d2-4f86-975d-a0809268ee07"
+              sourceElement="#3beacfea-5d50-4ceb-aca6-ac5f2cff173a"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="636d3a4b-0537-45df-8332-d6b149aa1580" targetElement="#94b917fa-1dbf-4af1-ba1c-2466a53f0ead"
               sourceElement="#3beacfea-5d50-4ceb-aca6-ac5f2cff173a"/>
           <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
               id="c1df8784-956b-4f04-9489-e792236c9244" name="System State Machine">
@@ -792,9 +850,6 @@
               id="a7d9d67e-2c37-487e-bbb8-56a133264e31" targetElement="#0c10dbdc-3641-4421-ae80-35903a1105dc"
               sourceElement="#50ecae84-5022-4b33-80f8-3e4829d52604"/>
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-              id="148daa66-8938-43f2-98bb-04c4a966bd4d" targetElement="#ed7f2ab9-976b-4b3d-8718-92c07a187597"
-              sourceElement="#50ecae84-5022-4b33-80f8-3e4829d52604"/>
-          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="3b760c80-fa05-4893-9be6-7453c1592944" targetElement="#83628429-71ba-45f2-a23f-59d02f0e373c"
               sourceElement="#50ecae84-5022-4b33-80f8-3e4829d52604"/>
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
@@ -808,6 +863,9 @@
               sourceElement="#50ecae84-5022-4b33-80f8-3e4829d52604"/>
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="3ed7ae81-3b4d-41a9-95f3-50e86f4b1778" targetElement="#5ebd5052-260e-4b90-be4a-15738b3778ab"
+              sourceElement="#50ecae84-5022-4b33-80f8-3e4829d52604"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="68991c0d-836a-49c8-92f9-d71367fce5d7" targetElement="#40330aa6-e7f2-4cf8-ab0b-04a0e29f35e2"
               sourceElement="#50ecae84-5022-4b33-80f8-3e4829d52604"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="0f57017e-4caa-437d-b83c-c2cb27933d8e" targetElement="#4a321f7c-26b1-40d7-9c7f-ecd4eaa65956"
